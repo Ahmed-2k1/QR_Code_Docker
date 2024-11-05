@@ -36,13 +36,13 @@ the target website. You must make your program generate a QR code that takes som
 ### Building the Image
 
 ```sh
-docker build -t my-qr-app .
+docker build -t qrcode .
 ```
-This command builds a Docker image named `my-qr-app` from the Dockerfile in the current directory (`.`).
+This command builds a Docker image named `qrcode` from the Dockerfile in the current directory (`.`).
 
 ### Running the Container with Default Settings
 ```sh
-docker run -d --name qr-generator my-qr-app
+docker run -d --name qr-generator qrcode
 ```
 
 Runs your QR code generator application in detached mode (`-d`) with a container named `qr-generator`.
@@ -56,7 +56,7 @@ docker run -d --name qr-generator \
   -e QR_CODE_FILENAME='exampleQR.png' \
   -e FILL_COLOR='blue' \
   -e BACK_COLOR='yellow' \
-  my-qr-app
+  qrcode
 ```
 Customizes the QR code generation settings through environment variables.
 
@@ -65,7 +65,7 @@ Customizes the QR code generation settings through environment variables.
 ```sh
 docker run -d --name qr-generator \
   -v /host/path/for/qr_codes:/app/qr_codes \
-  my-qr-app
+  qrcode
 ```
 Mounts a host directory to the container for storing QR codes.
 
@@ -77,7 +77,7 @@ docker run -d --name qr-generator \
   -e FILL_COLOR='blue' \
   -e BACK_COLOR='yellow' \
   -v /host/path/for/qr_codes:/app/qr_codes \
-  my-qr-app
+  qrcode
 ```
 
 A comprehensive command that configures the QR code settings and mounts volumes for QR codes.
